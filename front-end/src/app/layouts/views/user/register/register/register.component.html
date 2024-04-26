@@ -1,0 +1,97 @@
+<!-- Range externe -->
+<div class="row justify-content-center" >
+
+  <div class="col-xl-10 col-lg-12 col-md-9 container-2" style="background-color: #e3e6eb; width: 900px;">
+
+      
+          
+              <!-- Plage imbriquée dans le corps de la carte -->
+            
+                     
+                          <div class="text-center">
+                              <h4>S'inscrire!</h4>
+                          </div>
+                          <div class="alert alert-danger" *ngIf="messageErr">
+                            {{messageErr}}
+                        </div>
+                          
+                        <form  class="form"  #f="ngForm" (ngSubmit)="register(f)">
+                          <div class="column">
+                          <div class="input-box">
+                            <label>Nom complet</label>
+                            <input type="text" placeholder="Entrez le nom complet" name="username" #username="ngModel" ngModel required />
+                          </div>
+                    
+                          <div class="input-box">
+                            <label>Adresse e-mail</label>
+                            <input type="text" placeholder="Entrez l'adresse e-mail" name="email" #email="ngModel" ngModel required />
+                          </div>
+                        </div>
+                    
+                          <div class="column">
+                            <div class="input-box">
+                              <label>Numéro de téléphone</label>
+                              <input type="number" placeholder="Entrez le numéro de téléphone" name="phone" #phone="ngModel" ngModel required />
+                            </div>
+                            <div class="input-box">
+                              <label>Date de naissance</label>
+                              <input type="date" placeholder="Entrez la date de naissance" name="dateNaissance" #dateNaissance="ngModel" ngModel required />
+                            </div>
+                          </div>
+                          <div class="column" style="margin-bottom: 10px;">
+                          <div >
+                            <label>Type d'utilisateur</label>
+                            <select  class="select-box" name="type" #type="ngModel" ngModel  required>
+                              <option value="" disabled selected hidden>Sélectionnez le type d'utilisateur</option>
+                              <option value="étudiant">Étudiant</option>
+                              <option value="enseignant">Enseignant</option>
+                              <option value="professionnel">Professionnel</option>
+                              <option value="autre">Autre</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label>Département</label>
+                            <select class="select-box" name="departement" #departement="ngModel" ngModel  required>
+                              <option value="" disabled selected hidden>Sélectionnez le département</option>
+                              <option value="RH">Ressources Humaines</option>
+                              <option value="Finance">Finance</option>
+                              <option value="IT">Informatique</option>
+                              <option value="Ventes">Ventes</option>
+                              <option value="Marketing">Marketing</option>
+                              <option value="Production">Production</option>
+                              <option value="Logistique">Logistique</option>
+                              <option value="Services">Services</option>
+                              <!-- Ajoutez ici d'autres options de département selon vos besoins -->
+                            </select>
+                          </div>
+                        </div>
+                          
+                          
+                          
+                          <div class="input-box address">
+                            <label>Adresse</label>
+                            <input type="text" placeholder="Entrez l'adresse" name="adress" #adress="ngModel" ngModel required />
+                            
+                          </div> 
+                            
+                            <div class="column">
+                              <div class="input-box">
+                              <input type="password" placeholder="Mot de passe" name="password" #password="ngModel" ngModel required />
+                              <input type="password" placeholder="Confirmez le mot de passe" name="password" #password="ngModel" ngModel required />
+                            </div>
+                            </div>
+
+                          
+                          <button type="submit">Soumettre</button>
+                          <div class="text-center mt-3">
+                            <p>Vous avez déjà un compte ? <a routerLink="/loginuser">Connectez-vous ici</a>.</p>
+                        </div>
+                        </form>
+                          
+                     
+                  
+              </div>
+          
+      
+
+  </div>

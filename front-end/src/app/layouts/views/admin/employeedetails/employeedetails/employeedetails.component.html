@@ -1,0 +1,22 @@
+<div  style="padding: 20px; border: 1px solid #ccc; border-radius: 5px;">
+    
+    <h3> Détails :</h3>
+   
+        <ul *ngIf="dataObject" style="list-style-type: none; padding: 0;margin-left: 30px;">
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>Nom de famille : </strong>{{dataObject.lastname}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>prénom : </strong>{{dataObject.firstname}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong> adresse-mail :</strong> {{dataObject.email}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>Ville :</strong>{{dataObject.ville}} </li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>Numéro de téléphone :</strong> {{dataObject.phone}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong> Date de naissance : </strong> {{dataObject.DateDeNaissance | date:'yyyy-MM-dd'}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>departement :</strong> {{dataObject.departement}}</li>
+            <li style=" margin: 12px; font-size: 20px; color: black;"><strong>post :</strong> {{dataObject.post}}</li>
+           
+        </ul>
+
+        <div class="alert alert-danger" *ngIf="messageErr" style="margin-top: 20px;">
+            {{messageErr}}
+        </div>
+        <button (click)="generatePDF()" style="margin-top: 20px; padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 5px; cursor: pointer;">Générer PDF</button>
+    
+</div>

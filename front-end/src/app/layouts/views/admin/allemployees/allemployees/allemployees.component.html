@@ -1,0 +1,221 @@
+
+<div class="cardHeader">
+  <a class="btn" style="font-size: 20px; float: right; margin: 25px; background-color: #07078e;" routerLink="/admin/addemployees">ADD EMPLOYEE</a>
+</div>
+<div class="cardHeader">
+  <a class="btn" style="font-size: 20px; float: left; margin: 25px; background-color: #07078e;" (click)="getAll()">Tous les employés</a>
+</div>
+ <div class="row" style="padding-top: 20px;"> 
+  <div class="col">
+<div class="input-group mb-3">
+  <label style="color: black;">Rechercher par département:</label>
+  <select class="form-select" id="inputGroupSelect02"name="departement" [(ngModel)]="searchTerm">
+    <option value="" disabled selected hidden>Sélectionnez le département</option>
+    <option value="RH">Ressources Humaines</option>
+    <option value="Finance">Finance</option>
+    <option value="IT">Informatique</option>
+    <option value="Ventes">Ventes</option>
+    <option value="Marketing">Marketing</option>
+    <option value="Production">Production</option>
+    <option value="Logistique">Logistique</option>
+    <option value="Services">Services</option>
+  </select>
+  <button (click)="onSearchIconClick()"><label class="input-group-text" for="inputGroupSelect02" ><i class="bi bi-search"></i></label></button>
+</div>
+</div>  
+ <div class="col"><div class="input-group mb-3"> 
+    <label style="color: black;">Rechercher par nom:</label>
+  <input class="form-select" id="inputGroupSelect02"name="firstname" [(ngModel)]="searchname">
+  <button (click)="onSearchName()"><label class="input-group-text" for="inputGroupSelect02" ><i class="bi bi-search"></i></label></button>
+</div></div>
+</div>
+<div class="alert alert-danger" *ngIf="messageErr && !messageSuccess">
+  {{messageErr}}
+</div>
+<div class="alert alert-success" *ngIf="messageSuccess && !messageErr">
+  {{messageSuccess}}
+</div>
+
+
+    <table class="table" style="background-color: #ffffff; margin-left: 50px;">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Email</th>
+            <th scope="col">department</th>
+            <th scope="col">poste</th>
+            <th scope="col">Option</th>
+        </tr>
+        </thead>
+
+        <tbody>
+          
+            
+            <tr *ngFor="let item of dataArray;index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{item.firstname}}</td>
+                <td>{{item.email}}</td>
+                <td>{{item.departement}}</td>
+                <td>{{item.post}}</td>
+                <td> 
+
+                  <button type="button" style="background-color: #ffffff; border-radius: 12px;" (click)="details(item._id)"><a  style="margin: 0 10px; padding: auto; color: rgb(0, 0, 0);"><i class="bi bi-person-square"></i></a></button> 
+                  <button type="button" style="background-color: #ffffffbe; border-radius: 12px; margin: auto 10px;" (click)="getdata(item.firstname,item.lastname,item.email,item.phone,item.departement,item.post,item.ville,item.DateDeNaissance,item._id)" data-bs-toggle="modal" data-bs-target="#exampleModal" ><a  style="margin: 0 10px; padding: auto; color: rgb(0, 0, 0);"> <i class="bi bi-pencil-square"></i></a> </button>
+                  <button  type="button" style="background-color: #cd3700; border-radius: 12px;" (click)="delete(item._id,i)"><a  style="margin: 0 10px; padding: auto; color: white;" >  <i class="bi bi-trash"></i></a></button>
+                </td>
+               
+              </tr>
+
+              
+        </tbody>
+        <thead >
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Email</th>
+            <th scope="col">department</th>
+            <th scope="col">poste</th>
+            <th scope="col">Option</th>
+        </tr>
+        </thead>
+    </table>
+
+
+    
+   
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form #f="ngForm" (ngSubmit)="update(f)" class="row g-3">
+            <!-- Firstname -->
+            <div class="col-md-6">
+                <label for="firstname" class="form-label">Firstname</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" placeholder="Nom" [(ngModel)]="dataEmployee.firstname" name="firstname" #firstname="ngModel" minlength="2" maxlength="20" required>
+                </div>
+            </div>
+            
+            <!-- Lastname -->
+            <div class="col-md-6">
+                <label for="lastname" class="form-label">Lastname</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" placeholder="Prénom" [(ngModel)]="dataEmployee.lastname" name="lastname" #lastname="ngModel" minlength="2" maxlength="20" required>
+                </div>
+            </div>
+            
+            <!-- Email -->
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" placeholder="Email" [(ngModel)]="dataEmployee.email" name="email" #email="ngModel" required>
+                </div>
+            </div>
+            
+            <!-- Date de naissance -->
+            <div class="col-md-6">
+                <label for="DateDeNaissance" class="form-label">Date de naissance</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                    <input type="date" class="form-control" placeholder="Date de naissance" [(ngModel)]="dataEmployee.DateDeNaissance" name="DateDeNaissance" #DateDeNaissance="ngModel" required>
+                </div>
+            </div>
+            
+            <!-- Département -->
+            <div class="col-md-6">
+                <label for="departement" class="form-label">Département</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-building"></i></span>
+                    <select class="form-select" [(ngModel)]="dataEmployee.departement" name="departement" #departement="ngModel" required>
+                        <option value="" disabled selected>Sélectionnez le département</option>
+                        <option value="RH">Ressources Humaines</option>
+                        <option value="Finance">Finance</option>
+                        <option value="IT">Informatique</option>
+                        <option value="Ventes">Ventes</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Production">Production</option>
+                        <option value="Logistique">Logistique</option>
+                        <option value="Services">Services</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Poste -->
+            <div class="col-md-6">
+                <label for="post" class="form-label">Poste</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                    <select class="form-select" [(ngModel)]="dataEmployee.post" name="post" #post="ngModel" required>
+                        <option value="" disabled selected>Sélectionnez le poste</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Développeur">Développeur</option>
+                        <option value="Analyste">Analyste</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Responsable des ventes">Responsable des ventes</option>
+                        <option value="Chef de projet">Chef de projet</option>
+                        <option value="Assistant administratif">Assistant administratif</option>
+                        <option value="Technicien">Technicien</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Téléphone -->
+            <div class="col-md-6">
+                <label for="phone" class="form-label">Téléphone</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                    <input type="tel" class="form-control" placeholder="Téléphone" [(ngModel)]="dataEmployee.phone" name="phone" #phone="ngModel" required>
+                </div>
+            </div>
+            
+            <!-- Success message -->
+            <div class="col-md-12">
+                <div class="alert alert-success" *ngIf="messageSuccess">{{ messageSuccess }}</div>
+            </div>
+            
+            <!-- Submit button -->
+            <div class="col-md-12">
+                <button type="submit" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Modifier</button>
+            </div>
+        </form>
+        
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+ 

@@ -1,0 +1,77 @@
+
+<div class="cardHeader">
+  <h1 style="font-size: 25px;">***toutes les offres***</h1>
+  <form #f="ngForm" (ngSubmit)="add(f)">
+   
+ <div class="input-group mb-3">
+  <input style="border-radius: 9px;" type="text" class="form-control"   name="text" #text="ngModel" ngModel>
+  <button class="btn btn-success" style="margin: 10px;background-color: #a4a4a4;border-radius: 12px;">ajouter</button>
+</div>
+ 
+</form>
+
+    
+</div>
+
+<table class="table" style="background-color: white;">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">titre</th>
+        <th scope="col">option</th>
+        
+      </tr>
+    </thead>
+
+    <tbody>
+        
+      <tr  *ngFor="let item of Array ;index as i">
+           <td>{{i+1}}</td>               
+        <td><p style="color: rgb(8, 8, 8); font-size: 15px;"> {{ item.text }}</p> </td>
+        <td>
+           <button type="button" class="btn btn-primary " (click)="getdata(item.text,item._id)" style="background-color: #0000CD; border-radius: 12px;" data-bs-toggle="modal" data-bs-target="#ModalNews">modifier</button>
+           <button type="button" class="btn btn-success" (click)="deleteNews(item._id,i)" style="background-color: #a4a4a4;border-radius: 12px;margin-left: 5px; "  >supprimer</button>
+        </td>
+      </tr>
+
+    
+    </tbody>
+    <thead >
+        <tr>
+            <th scope="col">#</th>
+        <th scope="col">titre</th>
+        <th scope="col">option</th>
+            
+        </tr>
+    </thead>
+</table>
+
+
+
+    <!--------------------modal--------------->
+    <div class="modal-dialog modal-dialog-centered" style="margin-top: 200px;">
+      <div class="modal fade" id="ModalNews" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #f="ngForm" (ngSubmit)="updatedata(f)">
+                
+                   <input style="border-radius: 9px;" type="text" class="form-control"  [(ngModel)]="dataNews.text"  name="text" #text="ngModel" ngModel>
+                <div class="modal-footer">
+                  <button class="btn btn-success" style="margin: 10px;background-color: #a4a4a4;border-radius: 12px;">modifier</button>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> 
+                </div>
+                <div class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</div>
+            </form>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+

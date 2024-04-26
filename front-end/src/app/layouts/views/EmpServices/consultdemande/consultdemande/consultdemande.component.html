@@ -1,0 +1,37 @@
+<div class="alert alert-dark" role="alert" *ngIf="message" style="margin-top: 30px;">
+    {{message}}
+  </div>
+  
+  <table class="table" *ngIf="dataAccepter">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>type</td>
+        <td>Nom</td>
+        <td>Email</td>
+        <td>Etat</td>
+        <td>Option</td>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let item of dataAccepter; index as i">
+        <th>{{i+1}}</th>
+        <td><strong>{{item.typeStage || item.type}}</strong></td>
+        <td>{{item.username}}</td>
+        <td>{{item.email}}</td>
+        <td style="color: rgb(18, 193, 65);">Accepté</td>
+        <td>
+          <button type="button" style="background-color: #ffffff; border-radius: 12px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <a class="btn" style="color: blue;"><i class="bi bi-pencil-square"></i></a>
+          </button>
+          <button type="button" style="background-color: #ffffff; border-radius: 12px;">
+            <a class="btn"><i class="bi bi-trash" style="color: red;"></i></a>
+          </button>
+          <button type="button" style="background-color: #ffffff; border-radius: 12px;">
+            <a class="btn">upload</a>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,85 @@
+
+<div class="container">
+  <div class="row clearfix">
+      <div class="col-lg-12">
+          <div class="card chat-app">
+              <div id="plist" class="people-list">
+                  <div class="input-group">
+                    <input class="form-select" id="inputGroupSelect02"name="firstname" [(ngModel)]="searchname">
+                    <button (click)="onSearchName()"><label class="input-group-text" for="inputGroupSelect02" ><i class="bi bi-search"></i></label></button>
+                  </div>
+                  <ul class="list-unstyled chat-list mt-2 mb-0" style="overflow-y: scroll; max-height: 425px ">
+                    <div class="alert alert-danger" *ngIf="messageErr && !messageSuccess">
+                        {{messageErr}}
+                      </div>
+                      <div class="alert alert-success" *ngIf="messageSuccess && !messageErr">
+                        {{messageSuccess}}
+                      </div>
+                      <li class="clearfix"*ngFor="let item of dataArray;index as i">
+                          <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="avatar">
+                          <div class="about">
+                              <div class="name">{{item.firstname}}</div>
+                              <div style="font-size:x-small;">{{item.email}}</div>
+                           
+                              <div class="status"> <i class="fa fa-circle offline"></i>{{item.departement}}  </div> 
+                                                                        
+                          </div>
+                      </li>
+                     
+                  </ul>
+              </div>
+              <div class="chat">
+                  <div class="chat-header clearfix">
+                      <div class="row">
+                          <div class="col-lg-6">
+                             
+                                  <img src="assets/user/img/logo.png" alt="avatar">
+                              
+                              <div class="chat-about">
+                                  <h6 class="m-b-0">STIR</h6>
+                                  
+                              </div>
+                          </div>
+                          
+                      </div>
+                  </div>
+                  <div class="chat-history" style="overflow-y: scroll; max-height: 425px ">
+                    <ul class="m-b-0">
+                     
+                      <li class="clearfix" *ngFor="let item of Array; let i = index" id="chatliste">
+                       
+                        <div *ngIf="item.username !== firstname">
+                          <div class="message-data">
+                            <span class="message-data-time">{{ item.date }}, {{item.username}}</span>
+                          </div>
+                          <div class="message my-message">{{ item.text }}</div>
+                        </div>
+                        <div class="message-data float-right"*ngIf="item.username === firstname">
+                          <span class="message-data-time">{{ item.date }}, {{ item.username}}</span>
+                        </div>
+                        <div class="message other-message float-right" *ngIf="item.username === firstname"> 
+                          {{ item.text }}
+                        </div>
+
+                      </li>                               
+                    </ul>
+                  </div>
+                  <div class="chat-message clearfix">
+                    <div class=" mb-0">
+                      <form class="form2" #f="ngForm" (ngSubmit)="AjouterMessage(f)">
+                       <div style="display: flex;">
+                        <input type="text" class="form-control"  placeholder="Tapez un message..." name="text" [(ngModel)]="text" style="padding: 30px; border-radius: 12px;  ">
+                         <button class="btn" type="submit" ><i class="fas fa-paper-plane"></i></button> 
+                        </div>
+                      </form>                                 
+                    </div>
+                </div>
+                  
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+

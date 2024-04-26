@@ -1,0 +1,47 @@
+
+       
+            <div class="text-center">
+                <h1 style="font-size: 30px;" >***Demande d'Emploi***</h1>
+            </div>
+            <form class="form"  #f="ngForm" (ngSubmit)="add(f)">
+         <div class="row" style="margin-bottom: 50px;">
+                 
+                  <div class="row">
+                    <div class="col">
+                        <div >
+                            <label style="color: black;">Département</label>
+                            <select class="select-box" id="department" name="departement" #departement="ngModel" ngModel required>
+                                <option value="" selected hidden>Choisir...</option>
+                                <option>Ressources Humaines</option>
+                                <option>Marketing</option>
+                                <option>Finance</option>
+                                <option>Ventes</option>
+                                <option>Développement</option>
+                                <option>Design</option>
+                                <option>Production</option>
+                                <option>Logistique</option>
+                                <option>Recherche et Développement</option>
+                                <option>Service clientèle</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+                    
+                </div> 
+                <div class="input-box" >
+                    <label for="message">Pourquoi souhaitez-vous nous rejoindre ?</label>
+                    <textarea id="message" class="form-control" name="text" #text="ngModel" ngModel required></textarea>
+                </div>
+                               
+            </div>
+                
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+
+                <div class="alert alert-dark" role="alert" *ngIf="message" style="margin-top: 30px;">
+                    {{message}}
+                </div>
+                
+            </form>
+        
+ 
+  

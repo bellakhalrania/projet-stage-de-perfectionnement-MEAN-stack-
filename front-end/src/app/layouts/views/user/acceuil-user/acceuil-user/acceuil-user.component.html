@@ -1,0 +1,49 @@
+
+<div class=" service-item-top  type" style="margin-top: 20px; margin-bottom: 25px;padding-bottom: 40px; color: rgb(0, 0, 0);"  >
+<h2 style="color: rgb(0, 0, 0);">Le centre de formation professionnelle de la STIR</h2>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm-4" style="margin-top: 50px; "><img src="./assets/user/img/présentation.jpg" style="width: 300px;"></div>
+      <div class="col-sm-8" style="margin-top: 80px;margin-bottom: 30px; font-size:20px ;"> <p>Aujourd’hui, l’industrie de l’énergie est confrontée à des nombreux défis. Avec la chute des prix du brut, le développement et le renforcement des compétences professionnelles de vos équipes n’ont jamais été aussi importants.</p></div>
+      
+    </div>
+ <p style="margin-top: 20px;">Depuis&nbsp; 1976 , et dans un soucis de répondre aux besoins de l’industrie,le Centre de Formation Professionnelle de la STIR&nbsp; propose des formations de développement des compétences dans les domaines de l’instrumentation, de la régulation, de l’automatisme, de l’électricité, des machines tournantes, de la mécanique, du raffinage, pétrole et gaz, et ne cesse de se doter de moyens didactiques appropriés à la formation théorique et pratique.</p>
+ <p>En tant que partenaire officiel de l’Institut de Régulation et Automation (IRA) Arles France, dans le domaine de développement professionnel,&nbsp; le CFP STIR est en mesure de fournir aux professionnels les compétences et les atouts nécessaires pour effectuer leur travail efficacement et en toute sécurité. Nous avons le plaisir&nbsp; de vous annoncer que le CFP STIR dispose dorénavant des nouveaux équipements didactiques identiques à ceux&nbsp; de l’IRA France&nbsp;s’agissant d’un :</p>  
+ <ul>
+  <li>Nouvel automate Rockwell Allen Bradley SLC 500</li>
+  <li>Nouveau monte charge/ascenseur didactique avec platine de démarrage direct compatible avec les cursus automatismes.</li>
+  </ul>  
+</div>
+    
+
+
+
+</div>
+<p style="font-size: 25px; color: black; text-align: center;">***Formations disponible***</p>
+<div style="display: flex;     overflow: hidden;
+overflow-x: scroll;">
+<div  class=" col-md-6 service-item-top  type" style="padding: 20px;" *ngFor="let item of dataFormation; index as i">
+  <div class="d-flex align-items-center justify-content-between  " >
+      <div >
+        <h5  class="text-truncate me-3 mb-0" >***FORMATION***</h5>
+      </div>
+        <a  class="btn  btn-outline-primary  border-dark " href="">{{item.date}}</a>
+    </div>
+  <div class="overflow-hidden" style="color: black; padding: 0 10px;">
+    <p><strong>Titre :</strong></p> 
+    <p>{{item.titre}}</p>
+    <p style="color: black;"><strong>Description :</strong></p> 
+      <p>{{item.description}}</p>
+<a  class="btn border-dark " style="margin-left: 210px;" >Consulter</a>
+  </div>
+  
+</div>
+
+
+
+
+
+
+</div>
+

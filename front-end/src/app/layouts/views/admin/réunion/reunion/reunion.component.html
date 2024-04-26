@@ -1,0 +1,133 @@
+
+
+<!--------------------offre-start--------------------------------->
+<div class="container">
+  <h1 style="font-size: 25px;">***toutes les réunions***</h1>
+  <div class="row">
+  <div class="col-4">
+<div class="cardHeader">
+ 
+
+  <form class="form" #f="ngForm" (ngSubmit)="addReunion(f)">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="fas fa-calendar-plus"></i></span>
+        </div>
+        <input type="text" placeholder="Ajouter une Réunion...." class="form-control" name="text" #text="ngModel" ngModel required>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+        </div>
+        <input type="date" class="form-control" required name="DateReunion" #DateReunion="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="far fa-clock"></i></span>
+        </div>
+        <input type="time" class="form-control" required name="heure" #heure="ngModel" ngModel>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-success" style="margin: 10px;background-color: #a4a4a4;border-radius: 12px;">Ajouter</button>
+    </div>
+  </form>
+</div>
+</div>
+<div class="col-8">
+<table class="table" style="background-color: white;">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">titre</th>
+      <th scope="col">Date</th>
+      <th scope="col">option</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+      
+    <tr  *ngFor="let item of Array ;index as i">
+      <td>{{i+1}}</td>               
+   <td><p style="color: rgb(8, 8, 8); "> {{ item.text }}</p> </td>
+   <td> {{item.DateReunion}} &{{item.heure}}</td>
+   <td>
+      
+      <button type="button" style="background-color: #ffffffbe; border-radius: 12px; margin: auto 10px;" (click)="getdata(item._id,item.text,item.DateReunion,item.heure)" data-bs-toggle="modal" data-bs-target="#ModalAdd" ><a  style="margin: 0 10px; padding: auto; color: rgb(0, 0, 0);"> <i class="bi bi-pencil-square"></i></a> </button>
+      <button  type="button" style="background-color: #cd3700; border-radius: 12px;" (click)="deleteReunion(item._id,i)"><a  style="margin: 0 10px; padding: auto; color: white;" >  <i class="bi bi-trash"></i></a></button>
+    </td>
+ </tr>
+
+  
+  </tbody>
+  <thead >
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">titre</th>
+      <th scope="col">Date</th>
+      <th scope="col">option</th>
+      
+    </tr>
+  </thead>
+</table>
+</div>
+</div>
+
+
+  
+  
+<!--------------------modal--------------->
+
+<div class="modal fade" id="ModalAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modifier Réunion</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="alert alert-success" *ngIf="messageSuccess">{{messageSuccess}}</div>
+        <form class="form" #d="ngForm" (ngSubmit)="updatedata(d)">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-calendar-plus"></i></span>
+              </div>
+              <input type="text" placeholder="Ajouter une Réunion...." class="form-control" [(ngModel)]="Reunion.text" name="text"  required>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+              </div>
+              <input type="date" class="form-control" required name="DateReunion" [(ngModel)]="Reunion.DateReunion" >
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-clock"></i></span>
+              </div>
+              <input type="time" class="form-control" required name="heure" [(ngModel)]="Reunion.heure" >
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" style="margin: 10px;background-color: #a4a4a4;border-radius: 12px;">Ajouter</button>
+          </div>
+        </form>
+      
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+</div>

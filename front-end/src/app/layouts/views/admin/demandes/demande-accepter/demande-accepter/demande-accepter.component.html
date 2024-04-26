@@ -1,0 +1,68 @@
+<h1 style="font-size: 25px;text-align: center; margin-top:10px;border-top: black dotted;">***Liste des demandes acceptées***</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>type</td>
+            <td>nom</td>
+            <td>Email</td>
+            <td>departement</td>
+            
+            <td>Option</td>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let item of datademande;index as i">
+            <th scope="row">{{i+1}}</th>
+            <td><strong>{{item.type}}</strong></td>
+            <td>{{item.username}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.departement}}</td>
+           
+            <td>
+            <button type="button" (click)="getOnedemande(item._id)" style="background-color: #ffffff;  border-radius: 12px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><a  class="btn" style="color: blue;"><i class="bi bi-pencil-square"></i></a></button>
+            
+             <button type="button" (click)="deletedemande(item._id,i)" style="background-color: #ffffff;  border-radius: 12px;"> <a  class="btn"><i class="bi bi-trash" style="color: red;"></i></a> </button></td>
+        </tr>
+        
+    </tbody>
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>type</td>
+            <td>Nom</td>
+            <td>Email</td>
+
+           
+            <td>Option</td>
+        </tr>
+    </thead>
+</table>
+
+
+
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 *ngIf="datademande" class="modal-title" id="staticBackdropLabel">Informations de {{ demande?.username }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <ul *ngIf="demande" style="list-style-type: none; padding: 0; margin-left: 30px;">
+                <ul>
+                    <li style="margin: 12px; font-size: 20px; color: black;"><strong>Nom :</strong> {{ demande?.username }}</li>
+                    <li style="margin: 12px; font-size: 20px; color: black;"><strong>Email :</strong> {{ demande?.email }}</li>
+                    <li style="margin: 12px; font-size: 20px; color: black;"><strong>Département :</strong> {{ demande?.departement }}</li>
+                    <li style="margin: 12px; font-size: 20px; color: black;"><strong>Type :</strong> {{ demande?.type }}</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+
+
+
+
+<div class="text-center">
+    <h1 style="font-size: 30px;">***Demande de congé***</h1>
+        
+    
+</div>
+<div class="alert alert-dark" role="alert" *ngIf="messageErr" style="margin-top: 30px;">
+   !!! {{messageErr}}!!!
+</div>
+<form class="form"#f="ngForm" (ngSubmit)="add(f)" >
+   
+    
+    <div class="row">
+        <div class="col">
+            <div >
+                <label style="color: black;">Type de congé:</label>
+                <select class="select-box" name="typeconge" #typeconge="ngModel" ngModel required>
+                    <option value="" selected hidden>Choisir...</option>
+                    <option value="">--Choisir un type--</option>
+                             <option value="conges_payes">Congés payés</option>
+                             <option value="conges_maladie">Congés maladie</option>
+                             <option value="autre">Autre</option>
+                </select>
+
+               
+            </div>
+            
+        </div>
+        
+    </div>
+<div class="row">
+    <div class="col">
+        <div class="input-box">
+            <label for="date_debut"><i class="bi bi-calendar-plus"></i> Date de début:</label>
+            <input type="date" id="date_debut" name="datedebut" #datedebut="ngModel" ngModel required>
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-box">
+            <label for="date_fin"><i class="bi bi-calendar-minus"></i> Date de fin:</label>
+            <input type="date" id="date_fin" name="dateFin" #dateFin="ngModel" ngModel required>
+        </div>
+    </div>
+ </div>
+    
+    <div class="input-box" style="margin-top: 10px;">
+        <label for="message">Motif du congé:</label>
+        <textarea id="message" class="form-control" name="text" #text="ngModel" ngModel required></textarea>
+    </div>
+    
+    
+    
+    <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i> Envoyer</button>
+
+    <div class="alert alert-dark" role="alert" *ngIf="message" style="margin-top: 30px;">
+        {{message}}
+    </div>
+  
+    
+    
+
+</form>
+

@@ -1,0 +1,193 @@
+
+<div class="container"> 
+  <div class="row">
+  <div class="col-4">
+   
+    <form #f="ngForm" (ngSubmit)="Ajouter(f)">
+      <h1 style="font-size: 25px;">Ajouter une nouvelle formation</h1>
+      <div class="form-group">
+        <label for="titre" class="form-label">Titre</label>
+        <div class="input-group"> 
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-pencil"></i></span>
+          </div>
+          <input type="text" class="form-control" id="titre" placeholder="Entrez le titre de la formation" name="titre" #titre="ngModel" ngModel required />
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="titre.errors?.['required'] &&titre.touched">
+        Veuillez saisir le titre
+      </div>
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <div class="input-group"> 
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-file-text"></i></span>
+          </div>
+          <input type="text" class="form-control" id="description" placeholder="Entrez la description de la formation" name="description" #description="ngModel" ngModel required />
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="description.errors?.['required'] &&description.touched">
+        Veuillez saisir le description
+      </div>
+      <div class="form-group">
+        <label for="date" class="form-label">Date</label>
+        <div class="input-group"> 
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+          </div>
+          <input type="date" class="form-control" id="date" name="date" #date="ngModel" ngModel required />
+        </div>
+      </div>
+      <div class="alert alert-danger" *ngIf="date.errors?.['required'] &&date.touched">
+        Veuillez saisir la date
+      </div>
+      <div class="form-group">
+        <label for="lieu" class="form-label">Lieu</label>
+        <div class="input-group"> 
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+          </div>
+          <input type="text" class="form-control" id="lieu" placeholder="Entrez le lieu de la formation" name="lieu" #lieu="ngModel" ngModel required />
+        </div>
+      </div>
+    
+      <div class="alert alert-danger" *ngIf="lieu.errors?.['required'] &&lieu.touched">
+        Veuillez saisir le lieu
+      </div>
+      <button type="submit" class="btn btn-primary" style="border-radius: 3px; width: 184px; margin: 15px auto;" [disabled]="f.invalid">Ajouter</button>
+    </form>
+    <div class="alert alert-danger" *ngIf="messageErr">
+      {{messageErr}}
+    </div>
+    
+  <div class="alert alert-success" *ngIf="messageSuccess1">{{messageSuccess1}}</div>
+  
+   </div>   
+ <div class="col-8">
+  <div class="cardHeader">
+  <h1 style="font-size: 25px;">***toutes les formations***</h1></div>
+  <table class="table" style="background-color: white;">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">titre</th>
+          <th>description</th>
+          <th>Date</th>
+          <th>Lieu</th>
+          
+          <th scope="col">option</th>
+          <th></th>
+          
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr  *ngFor="let item of ArrayData ;index as i">
+          <td>{{i+1}}</td>               
+       <td><p style="color: rgb(8, 8, 8); font-size: 15px;"> {{ item.titre }}</p> </td>
+       <td><p style="color: rgb(8, 8, 8); font-size: 15px;"> {{ item.description }}</p> </td>
+       <td><p style="color: rgb(8, 8, 8); font-size: 15px;"> {{ item.date }}</p> </td>
+       <td><p style="color: rgb(8, 8, 8); font-size: 15px;"> {{ item.lieu }}</p> </td>
+       <td>
+          
+          <button type="button" style="background-color: #ffffffbe; border-radius: 12px; margin: auto 10px;" (click)="getdata(item.titre,item.description,item.date,item.lieu,item._id)" data-bs-toggle="modal" data-bs-target="#ModalNews" ><a  style="margin: 0 10px; padding: auto; color: rgb(0, 0, 0);"> <i class="bi bi-pencil-square"></i></a> </button></td>
+         <td><button  type="button" style="background-color: #cd3700; border-radius: 12px;" (click)="deleteFormation(item._id,i)"><a  style="margin: 0 10px; padding: auto; color: white;" >  <i class="bi bi-trash"></i></a></button>
+        </td>
+     </tr>
+          
+       
+      
+      </tbody>
+      <thead >
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">titre</th>
+            <th>description</th>
+            <th>Date</th>
+            <th>Lieu </th>
+            <th scope="col">option</th>
+            <th></th>
+              
+          </tr>
+      </thead>
+  </table>
+</div>
+  
+  
+</div>
+    <!--------------------modal--------------->
+    <div class="modal-dialog modal-dialog-centered" style="margin-top: 200px;">
+      <div class="modal fade" id="ModalNews" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modifier la formation</h5> <!-- Titre modifié -->
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #d="ngForm" (ngSubmit)="updatedata(d)">          
+                  <div class="form-group">
+                    <label for="titre" class="form-label">Titre</label>
+                    <div class="input-group"> 
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-pencil"></i></span>
+                      </div>
+                      <input type="text" class="form-control" id="titre" [(ngModel)]="dataFormation.titre" name="titre" #titre="ngModel" ngModel required />
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="titre.errors?.['required'] &&titre.touched">
+                    Veuillez saisir le titre
+                  </div>
+                  <div class="form-group">
+                    <label for="description" class="form-label">Description</label>
+                    <div class="input-group"> 
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-file-text"></i></span>
+                      </div>
+                      <input type="text" class="form-control" id="description" [(ngModel)]="dataFormation.description" name="description" #description="ngModel" ngModel required />
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="description.errors?.['required'] &&description.touched">
+                    Veuillez saisir le description
+                  </div>
+                  <div class="form-group">
+                    <label for="date" class="form-label">Date</label>
+                    <div class="input-group"> 
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                      </div>
+                      <input type="date" class="form-control" id="date" [(ngModel)]="dataFormation.date" name="date" #date="ngModel" ngModel required />
+                    </div>
+                  </div>
+                  <div class="alert alert-danger" *ngIf="date.errors?.['required'] &&date.touched">
+                    Veuillez saisir la date
+                  </div>
+                  <div class="form-group">
+                    <label for="lieu" class="form-label">Lieu</label>
+                    <div class="input-group"> 
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                      </div>
+                      <input type="text" class="form-control" id="lieu" [(ngModel)]="dataFormation.lieu" name="lieu" #lieu="ngModel" ngModel required />
+                    </div>
+                  </div>
+                
+                  <div class="alert alert-danger" *ngIf="lieu.errors?.['required'] &&lieu.touched">
+                    Veuillez saisir le lieu
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="border-radius: 3px; width: 184px; margin: 15px auto;" [disabled]="d.invalid">Modifier</button>
+                </form>
+                      <div class="alert alert-danger" *ngIf="messageErr">
+                          {{messageErr}}
+                      </div>
+    
+                          <div class="alert alert-success" *ngIf="messageSuccess2">{{messageSuccess2}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      
+
+  

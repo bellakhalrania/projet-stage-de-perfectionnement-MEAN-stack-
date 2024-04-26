@@ -1,0 +1,96 @@
+
+  <!-- =============== Navigation ================ -->
+
+<!------------------------------New------------------------------------>
+<!-- Topbar Start -->
+<div class="container-fluid bg-light d-none d-lg-block">
+    
+</div>
+<!-- Topbar End -->
+
+
+<!-- Navbar Start -->
+<div class="container-fluid nav-bar bg-light"  style="padding: 0;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4" >
+      <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+        <img src="./assets/user/img/logo.png" class="logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+          <span class="fa fa-bars"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+          <div class="navbar-nav me-auto">
+            <div class="nav-item dropdown "> <a routerLink="/admin/dashboard"  class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="home" style="width: 20px; height: 20px;"></ion-icon>Tableau de Bord </a></div>
+            <div class="nav-item dropdown"><a routerLink="/admin/allemployees"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"> <ion-icon name="people-circle-outline" style="width: 20px; height: 20px;"></ion-icon>Personnel</a>
+              <div class="dropdown-menu fade-up m-0">
+                <a routerLink="/admin/addemployees" style="background-color: bisque;" class="dropdown-item"> <ion-icon name="person-add" style="width: 20px; height: 20px;"></ion-icon>Ajouter Employé</a>
+                
+            </div>  
+            </div>
+            <div class="nav-item dropdown"><a routerLink="/admin/user"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"> <ion-icon name="people-circle-outline" style="width: 20px; height: 20px;"></ion-icon>Listes des comptes</a></div>
+        
+            <div class="nav-item dropdown"><a  routerLink="/admin/offre"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="add-circle" style="width: 20px; height: 20px;"></ion-icon>Offres</a></div>
+            <div class="nav-item dropdown"><a  routerLink="/admin/reunion"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="add-circle" style="width: 20px; height: 20px;"></ion-icon>Réunions</a></div>
+            <div class="nav-item dropdown"><a  routerLink="/message/demandeStage"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"> <ion-icon name="document-outline" style="width: 20px; height: 20px;"></ion-icon>demandes</a>
+              <div class="dropdown-menu fade-up m-0"><a routerLink="/message/Accepter"  class="dropdown-item">(14)Demandes accepter</a></div>
+            </div>
+            <div class="nav-item dropdown"><a  routerLink="/admin/formation"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="document-outline" style="width: 20px; height: 20px;"></ion-icon>Formations</a></div>
+            <div class="nav-item dropdown"><a  routerLink="/admin/profil"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="person-circle" style="width: 20px; height: 20px;"></ion-icon>Profil</a></div>
+              
+          </div>
+           
+                 <h6 style="margin-top: 12px; padding-left: 30px; font-size: 18px;">Bienvenu(e)</h6>
+                  <a  class="nav-item nav-link"> admin</a>
+                  <div class="user" style="margin-right:15px;">
+                      <img src="./assets/admin/imgs/admin.png" alt="">
+                  </div>
+                  <a href="#">
+                      <span class="icon-3">
+                        <ion-icon name="log-out-outline"></ion-icon>
+                        
+                      </span>
+                      <h6 style="font-size: 11px;">Se déconnecter </h6>
+                  </a>
+                 
+                 
+             
+         
+      </div>
+  </nav>
+</div>
+<!-- Navbar End -->
+  <div  style=" background-color: #EDF1FC;">
+    
+
+
+     
+
+
+     <div class=" col-md-auto "style=" width: 90%; min-height: 600px; padding-top: 30px; margin:auto 65px  ">
+       <!--------------------------------------------------->
+        <router-outlet></router-outlet>
+        
+        <!-- End of Footer -->
+        
+      </div>
+    
+      
+      
+       
+        
+      
+
+    
+</div>
+
+     
+    
+    
+      <!-- Header -->
+
+
+
+      
+  
+
+      

@@ -1,0 +1,74 @@
+
+        <div class="text-center">
+            <h1 style="font-size: 30px;">***Demande de stage***</h1>
+                
+            
+        </div>
+        <div class="alert alert-danger" *ngIf="messageErr">
+            {{messageErr}}
+        </div>
+        <div class="alert alert-dark" role="alert" *ngIf="message" style="margin-top: 30px;">
+            {{message}}
+        </div>
+        
+        <form class="form"#f="ngForm" (ngSubmit)="add(f)" >
+            <div class="row">
+                <div class="col">
+                    <div>
+                        <label style="color: black;">Département</label>
+                        <select class="select-box" id="department" name="departement" #departement="ngModel" ngModel required>
+                            <option value="" selected hidden>Choisir...</option>
+                            <option>Ressources Humaines</option>
+                            <option>Marketing</option>
+                            <option>Finance</option>
+                            <option>Ventes</option>
+                            <option>Développement</option>
+                            <option>Design</option>
+                            <option>Production</option>
+                            <option>Logistique</option>
+                            <option>Recherche et Développement</option>
+                            <option>Service clientèle</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <div  >
+                        <label style="color: black;">Type de stage</label>
+                        <select class="select-box" id="stage-type" name="typeStage" #typeStage="ngModel" ngModel required>
+                            <option value="" selected hidden>Choisir...</option>
+                            <option>Stage d'initiation</option>
+                            <option>Stage de perfectionnement</option>
+                            <option>PFE</option>     
+                        </select>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+            <div class="col">
+                <div class="input-box">
+                    <label for="date_debut"><i class="bi bi-calendar-plus"></i> Date de début:</label>
+                    <input type="date" id="date_debut" name="datedebut" #datedebut="ngModel" ngModel required>
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-box">
+                    <label for="date_fin"><i class="bi bi-calendar-minus"></i> Date de fin:</label>
+                    <input type="date" id="date_fin" name="dateFin" #dateFin="ngModel" ngModel required>
+                </div>
+            </div>
+         </div>
+            
+            <div class="input-box" style="margin-top: 10px;">
+                <label for="message">Pourquoi souhaitez-vous nous rejoindre pour ce stage ?</label>
+                <textarea id="message" class="form-control" name="text" #text="ngModel" ngModel required></textarea>
+            </div>
+            
+            
+            
+            <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-right-circle"></i> Envoyer</button>
+
+           
+            
+
+        </form>

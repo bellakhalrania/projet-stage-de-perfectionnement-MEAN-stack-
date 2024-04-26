@@ -1,0 +1,124 @@
+<div class="container" style="background-color: #fff;padding: auto; padding-top: 30px;">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <img src="./assets/admin/imgs/admin.png" style="width: 300px; border-radius: 50%; border: 5px solid #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);">
+        </div>
+        <div class="col-md-6" >
+            <div >
+            <div class="profile-details" *ngFor="let item of dataArray " >
+            <div *ngIf="item.email==emailuser">
+                <h3 style="color: #333; font-size: 28px; margin-bottom: 20px;">BONJOUR <a style="color: crimson;">{{name}}</a> </h3>
+                <ul style="list-style-type: none; padding: 0;">
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-person-fill" style="color: #007bff; margin-right: 10px;"></i> Nom :</strong> {{item.username}}
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-envelope-fill" style="color: #007bff; margin-right: 10px;"></i> Email :</strong> {{item.email}}
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-phone-fill" style="color: #007bff; margin-right: 10px;"></i> Téléphone :</strong>{{item.phone}}
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-phone-fill" style="color: #007bff; margin-right: 10px;"></i> Type :</strong>{{item.type}} <strong style="color: #0f0f0f;"> departement:</strong> {{item.departement}}
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-calendar-fill" style="color: #007bff; margin-right: 10px;"></i> Date de naissance :</strong> {{item.dateNaissance | date:'yyyy-MM-dd'}}
+                    </li>
+                    <li style="margin-bottom: 15px;">
+                        <strong style="color: #0f0f0f;"><i class="bi bi-geo-fill" style="color: #007bff; margin-right: 10px;"></i> Adresse :</strong> {{item.adress}}
+                    </li>
+                    <a  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getdata(item.username,item.email,item.phone,item.dateNaissance,item.type,item.departement,item.adress,item._id)" >Modifier le profil</a>
+                </ul>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="min-width: 900px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form class="row g-3" #d="ngForm" (ngSubmit)="update(d)">
+                <div class="col-md-6">
+                    <label for="fullName" class="form-label">Nom complet</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <input type="text" class="form-control" id="fullName" [(ngModel)]="dataUser.username" name="username" #username="ngModel" minlength="2" maxlength="20"  required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="email" class="form-label">Adresse e-mail</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        <input type="email" class="form-control" id="email"  [(ngModel)]="dataUser.email" name="email" #email="ngModel"  required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="phoneNumber" class="form-label">Numéro de téléphone</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        <input type="tel" class="form-control" id="phoneNumber" [(ngModel)]="dataUser.phone" name="phone" #phone="ngModel"  required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="birthdate" class="form-label">Date de naissance</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                        <input type="date" class="form-control" id="birthdate"[(ngModel)]="dataUser.dateNaissance" name="dateNaissance" #dateNaissance="ngModel" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="userType" class="form-label">Type d'utilisateur</label>
+                    <select class="form-select" id="userType" [(ngModel)]="dataUser.type" name="type" #type="ngModel" required>
+                        <option value="" disabled selected hidden   >Sélectionnez le type d'utilisateur</option>
+                        <option value="étudiant">Étudiant</option>
+                        <option value="enseignant">Enseignant</option>
+                        <option value="professionnel">Professionnel</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="department" class="form-label">Département</label>
+                    <select class="form-select" id="department" [(ngModel)]="dataUser.departement" name="departement" #departement="ngModel" required>
+                        <option value="" disabled selected hidden   >Sélectionnez le département</option>
+                        <option value="RH">Ressources Humaines</option>
+                        <option value="Finance">Finance</option>
+                        <option value="IT">Informatique</option>
+                        <option value="Ventes">Ventes</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Production">Production</option>
+                        <option value="Logistique">Logistique</option>
+                        <option value="Services">Services</option>
+                        <!-- Ajoutez ici d'autres options de département selon vos besoins -->
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <label for="address" class="form-label">Adresse</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                        <input type="text" class="form-control" id="address" [(ngModel)]="dataUser.adress" name="adress" #adress="ngModel"  required>
+                    </div>
+                </div>
+                <div class="alert alert-success" *ngIf="messageSuccess">{{ messageSuccess }}</div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary">Modifier</button>
+                </div>
+            </form>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+          
+        </div>
+      </div>
+    </div>
+  </div>

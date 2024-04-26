@@ -1,0 +1,95 @@
+
+  <!-- Navbar Start -->
+  <div class="container-fluid nav-bar bg-light"  style="padding: 0;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white p-3 py-lg-0 px-lg-4" >
+        <a href="" class="navbar-brand d-flex align-items-center m-0 p-0 d-lg-none">
+          <img src="./assets/user/img/logo.png" class="logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav me-auto">
+              <div class="nav-item dropdown"><img src="./assets/user/img/logo.png" class="logo" style="width: 88px;
+                height: 56px "></div>
+               
+              <div class="nav-item dropdown">
+                  <a routerLink="/employee/Acceuil"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown"> <ion-icon name="home" style="width: 20px; height: 20px;"></ion-icon>Tableau de Bord </a>
+              </div>
+              <div class="nav-item dropdown"><a routerLink="/employee/demande-conge"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><i class="fas fa-envelope" style="width: 20px; height: 20px;"></i>Demande de Congé</a></div>
+              <div class="nav-item dropdown"><a routerLink="/employee/consult"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="mail-open-sharp" style="width: 20px; height: 20px;"></ion-icon>consulter demandes</a></div>
+              <div class="nav-item dropdown"><a routerLink="/employee/message-employee"   class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="margin-right: 15px;"><ion-icon name="mail-open-sharp" style="width: 20px; height: 20px;"></ion-icon>Conversation</a></div>
+              <div class="nav-item dropdown"><a routerLink="/employee/profil-employee" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"style="margin-right: 15px;"><i class="bi bi-person-circle" style="width: 20px; height: 20px;"></i>Profil</a></div>
+                
+          </div>
+        
+                
+              
+                 
+              
+          
+            
+           
+                
+                   
+          <h6 style="margin-top: 12px; padding-left: 30px; font-size: 18px;">Bienvenu(e)</h6>
+          <a  class="nav-item nav-link"> {{firstname}}</a>
+          <div class="user" style="margin-right:15px;">
+              <img src="./assets/admin/imgs/admin.png" alt="">
+          </div>
+          <a href="#">
+              <span class="icon-3">
+                <ion-icon name="log-out-outline"></ion-icon>
+                
+              </span>
+              <h6 style="font-size: 11px;">Se déconnecter </h6>
+          </a>
+                   
+                   
+               
+          </div> 
+       
+    </nav>
+  </div>
+  <!-- Navbar End -->
+  <div  style=" background-color: #EDF1FC;">
+    
+
+
+     
+
+
+    <div class=" col-md-auto "style=" width: 90%; min-height: 483px; padding-top: 30px; margin:auto 65px  ">
+      <!--------------------------------------------------->
+       <router-outlet></router-outlet>
+       
+       <!-- End of Footer -->
+       
+     </div>
+   
+     
+     
+      
+       
+     
+
+   
+</div>
+
+<div class="bg-dark text-light footer pt-5 mt-5">
+  <div class="container ">
+   <div class="copyright">
+       <div class="row">
+           <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+               &copy; <a class="border-bottom">copyright 2024</a>
+           </div>
+           <div class="col-md-6 text-center text-md-end">
+               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+               Designed By Ranya
+           </div>
+       </div>
+   </div>
+ </div> 
+     
+     
+</div> 

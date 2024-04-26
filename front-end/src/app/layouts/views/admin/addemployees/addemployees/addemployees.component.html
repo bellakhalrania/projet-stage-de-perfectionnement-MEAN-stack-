@@ -1,0 +1,146 @@
+
+
+<form class="row g-3" #f="ngForm" (ngSubmit)="add(f)">
+  <div class="col-md-4">
+    <label  for="validationDefault01" class="form-label" >Prénom</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-person"></i></span>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Entrez..." name="firstname" #firstname="ngModel" ngModel required />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefault02" class="form-label">Nom de famille</label>
+    <input type="text" class="form-control" id="validationDefault02" placeholder="Entrez..." name="lastname" #lastname="ngModel" ngModel   required />
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefaultUsername" class="form-label">Email</label>
+    <div class="input-group">
+      <span class="input-group-text" id="inputGroupPrepend2"><i class="bi bi-envelope"></i></span>
+      <input type="email" class="form-control" id="validationDefaultUsername"  aria-describedby="inputGroupPrepend2" placeholder="Entrez l'adresse e-mail.." name="email" #email="ngModel" ngModel required />
+    </div>
+                 
+  </div>
+  <div class="col-md-4">
+    
+    <label for="validationDefault01" class="form-label">Numéro de téléphone</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+      <input type="number" class="form-control" id="validationDefault01" placeholder="Entrez le numéro de téléphone" name="phone" #phone="ngModel" ngModel required />
+    </div>
+  </div>
+  <div class="col-md-4">
+    <label for="validationDefault02" class="form-label">Date de naissance</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+      <input type="date" class="form-control" id="validationDefault02" placeholder="Entrez la date de naissance" name="DateDeNaissance" #DateDeNaissance="ngModel" ngModel required />
+    </div>
+  </div>
+  
+  <div class="col-md-6">
+    <label for="validationDefault03" class="form-label">Adresse</label>
+    <input type="text" placeholder="Entrez l'adresse" class="form-control" id="validationDefault03" required>
+   
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault04" class="form-label">Ville</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+    <select class="form-select" id="validationDefault04" name="ville" #ville="ngModel" ngModel required>
+      <option selected disabled value="">Ville</option>
+      <option>Tunis</option>
+      <option>Sfax</option>
+      <option>Sousse</option>
+      <option>Kairouan</option>
+      <option>Bizerte</option>
+      <option>Gabès</option>
+      <option>Ariana</option>
+      <option>Gafsa</option>
+      <option>La Marsa</option>
+      <option>El Mourouj</option>
+      <option>Kasserine</option>
+      <option>Ksar Hellal</option>
+      <option>Djerba</option>
+      <option>Mahdia</option>
+      <option>Monastir</option>
+      <option>Nabeul</option>
+      <option>Sidi Bouzid</option>
+      <option>Tozeur</option>
+      <option>Zaghouan</option>
+      <option>Béja</option>
+      <option>Jendouba</option>
+      <option>Le Kef</option>
+      <option>Médenine</option>
+      <option>Tataouine</option>
+    </select>
+  </div>
+  </div>
+  <div class="col-md-3">
+    <label for="validationDefault05" class="form-label">Code postal</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+      <input type="text" class="form-control" id="validationDefault05" required>
+  </div>
+  </div>
+  <div class="col-md-6">
+    <label for="department" class="form-label">Département</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-building"></i></span>
+      <select  class="form-select" id="validationDefault04"  name="departement"  #departement="ngModel" ngModel  required>
+        <option value="" >Sélectionnez le département</option>
+        <option value="RH">Ressources Humaines</option>
+        <option value="Finance">Finance</option>
+        <option value="IT">Informatique</option>
+        <option value="Ventes">Ventes</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Production">Production</option>
+        <option value="Logistique">Logistique</option>
+        <option value="Services">Services</option>
+        <!-- Add more options as needed -->
+      </select> 
+      </div>               
+  </div>
+  <div class="col-md-6">
+    <label for="position" class="form-label">Poste</label>
+    <div class="input-group">
+      <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+      <select class="form-select" id="validationDefault04" name="post" #post="ngModel" ngModel   required>
+        <option value="" hidden>Sélectionnez le poste</option>
+        <option value="Manager">Manager</option>
+        <option value="Développeur">Développeur</option>
+        <option value="Analyste">Analyste</option>
+        <option value="Commercial">Commercial</option>
+        <option value="Responsable des ventes">Responsable des ventes</option>
+        <option value="Chef de projet">Chef de projet</option>
+        <option value="Assistant administratif">Assistant administratif</option>
+        <option value="Technicien">Technicien</option>
+      </select>  
+      </div>              
+  </div>
+  <div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Mot de passe</label>
+    <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input type="password" class="form-control" id="validationDefault02" placeholder="Mot de passe" name="password" #password="ngModel" ngModel required />
+    </div>
+</div>
+<div class="col-md-6">
+    <label for="validationDefault02" class="form-label">Confirmez le mot de passe</label>
+    <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+        <input type="password" class="form-control" id="validationDefault02" placeholder="Confirmez le mot de passe" name="password" #password="ngModel" ngModel required />
+    </div>
+</div>
+ 
+                     
+  
+ 
+
+
+  
+  <button type="submit" class="btn btn-primary" style="    border-radius: 3px;
+  width: 184px;
+  margin: 15px auto;">Ajouter</button>
+              <div class="alert alert-danger" *ngIf="messageErr">
+                  {{messageErr}}
+              </div>
+</form>
